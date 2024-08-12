@@ -11,7 +11,6 @@ public class CollideDetector : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out IInteractable interactable))
         {
             CollisionIsHappened?.Invoke(interactable);
-
         }
     }
 }

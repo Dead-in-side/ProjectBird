@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour, IRecreatabl
+public abstract class Bullet : MonoBehaviour, IRecreatabl
 {
     [SerializeField, Range(0, 100)] private float _speed;
     [SerializeField] private CollideDetector _collideDetector;
@@ -33,9 +33,9 @@ public class Bullet : MonoBehaviour, IRecreatabl
 
         _lifeTime -= Time.deltaTime;
 
-        if (_lifeTime <= 0 && gameObject.TryGetComponent(out IRecreatabl recreatable))
+        if (_lifeTime <= 0)
         {
-            ObjectReadyToComeBack?.Invoke(recreatable);
+            ObjectReadyToComeBack?.Invoke(this);
         }
     }
 
@@ -55,21 +55,15 @@ public class Bullet : MonoBehaviour, IRecreatabl
 
     public void ReturnToPool()
     {
-        if (gameObject.TryGetComponent(out IRecreatabl recreatable))
-        {
-            ObjectReadyToComeBack?.Invoke(recreatable);
-        }
+        ObjectReadyToComeBack?.Invoke(this);
     }
 
     public void SetDirection(Vector3 direction) => _direction = direction;
 
     public virtual void Move()
     {
-        transform.Translate(_direction*_speed*Time.deltaTime);
+        transform.Translate(_direction * _speed * Time.deltaTime);
     }
 
-    public virtual void ReactToColission(IInteractable interactable)
-    {
-        
-    }
+    public abstract void ReactToColission(IInteractable interactable);
 }

@@ -8,20 +8,13 @@ public class Player : MonoBehaviour, IInteractable
     [SerializeField] private CollideDetector _detector;
     [SerializeField] private PlayerBulletSpawner _bulletSpawner;
 
-    private Vector3 _startPosition;
-
     public event Action GameOver;
-
-    private void Awake()
-    {
-        _startPosition = transform.position;
-    }
 
     private void OnEnable()
     {
         _inputReader.JumpButtonPressed += _mover.Jump;
-        _inputReader.FireButtonPressed += _bulletSpawner.SetMoveDirectionForObjects;
-        _inputReader.FireButtonPressed += _bulletSpawner.Shot;
+        _inputReader.ShotButtonPressed += _bulletSpawner.SetMoveDirectionForObjects;
+        _inputReader.ShotButtonPressed += _bulletSpawner.Shot;
 
         _detector.CollisionIsHappened += ReactToColission;
     }
@@ -29,7 +22,7 @@ public class Player : MonoBehaviour, IInteractable
     private void OnDisable()
     {
         _inputReader.JumpButtonPressed -= _mover.Jump;
-        _inputReader.FireButtonPressed -= _bulletSpawner.Shot;
+        _inputReader.ShotButtonPressed -= _bulletSpawner.Shot;
 
         _detector.CollisionIsHappened -= ReactToColission;
     }
@@ -43,6 +36,5 @@ public class Player : MonoBehaviour, IInteractable
     {
         _bulletSpawner.Reset();
         _mover.Reset();
-
     }
 }

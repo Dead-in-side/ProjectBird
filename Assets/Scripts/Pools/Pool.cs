@@ -26,9 +26,9 @@ public class Pool<T> : MonoBehaviour where T : MonoBehaviour, IRecreatabl
         return spawnedObject;
     }
 
-    public void TakeObject(IRecreatabl recreatable)
+    public void TakeObject(IRecreatabl recreatabl)
     {
-        if (recreatable is T spawnedObject)
+        if (recreatabl is T spawnedObject)
         {
             spawnedObject.ObjectReadyToComeBack -= TakeObject;
 
@@ -44,6 +44,7 @@ public class Pool<T> : MonoBehaviour where T : MonoBehaviour, IRecreatabl
         _createdObjects.Add(createdObject);
         return createdObject;
     }
+
     public T GetRandomPrefab() => _spawnedObjectPrefabs[Random.Range(0, _spawnedObjectPrefabs.Count)];
 
     public void AddToList(T obj)=>_createdObjects.Add(obj);

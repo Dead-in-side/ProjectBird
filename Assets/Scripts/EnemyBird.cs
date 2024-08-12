@@ -41,10 +41,7 @@ public class EnemyBird : MonoBehaviour, IRecreatabl
 
     public void ReturnToPool()
     {
-        if (gameObject.TryGetComponent(out IRecreatabl recreatable))
-        {
-            ObjectReadyToComeBack?.Invoke(recreatable);
-        }
+        ObjectReadyToComeBack?.Invoke(this);
     }
 
     public void EndTheLife()
@@ -56,12 +53,12 @@ public class EnemyBird : MonoBehaviour, IRecreatabl
 
     private void Move()
     {
-        transform.Translate(_direction*_enemy.Speed*Time.deltaTime);
+        transform.Translate(_direction * _enemy.Speed * Time.deltaTime);
     }
 
     private void ReactToColission(IInteractable interactable)
     {
-        if( interactable is PlayerBullet)
+        if (interactable is PlayerBullet)
         {
             ReturnToPool();
         }
@@ -71,8 +68,7 @@ public class EnemyBird : MonoBehaviour, IRecreatabl
     {
         WaitForSeconds delay;
 
-        bool isWork = true;
-        while (isWork)
+        while (enabled)
         {
             delay = new WaitForSeconds(UnityEngine.Random.Range(_enemy.MinDelay, _enemy.MaxDelay));
 
