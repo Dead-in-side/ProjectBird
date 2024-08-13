@@ -32,7 +32,7 @@ public class Pool<T> : MonoBehaviour where T : MonoBehaviour, IRecreatabl
         {
             spawnedObject.ObjectReadyToComeBack -= TakeObject;
 
-            spawnedObject.EndTheLife();
+            spawnedObject.Die();
 
             _objectsQueue.Enqueue(spawnedObject);
         }

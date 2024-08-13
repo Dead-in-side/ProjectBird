@@ -13,7 +13,6 @@ public class Player : MonoBehaviour, IInteractable
     private void OnEnable()
     {
         _inputReader.JumpButtonPressed += _mover.Jump;
-        _inputReader.ShotButtonPressed += _bulletSpawner.SetMoveDirectionForObjects;
         _inputReader.ShotButtonPressed += _bulletSpawner.Shot;
 
         _detector.CollisionIsHappened += ReactToColission;

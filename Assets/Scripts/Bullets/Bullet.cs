@@ -48,7 +48,7 @@ public abstract class Bullet : MonoBehaviour, IRecreatabl
         transform.position = position;
     }
 
-    public void EndTheLife()
+    public void Die()
     {
         gameObject.SetActive(false);
     }

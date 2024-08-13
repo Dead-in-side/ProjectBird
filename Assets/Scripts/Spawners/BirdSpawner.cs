@@ -5,22 +5,11 @@ public class BirdSpawner : Spawner<EnemyBird>
 {
     [SerializeField] private float _minDelay = 3;
     [SerializeField] private float _maxDelay = 7;
-    [SerializeField] private CollideDetector _collideDetector;
     private float _offset = 8f;
 
     private void Start()
     {
         StartCoroutine(SpawnCoroutine());
-    }
-
-    private void OnEnable()
-    {
-        _collideDetector.CollisionIsHappened += ReactToCollision;
-    }
-
-    private void OnDisable()
-    {
-        _collideDetector.CollisionIsHappened -= ReactToCollision;
     }
 
     public override Vector3 GetPosition()
@@ -41,19 +30,6 @@ public class BirdSpawner : Spawner<EnemyBird>
             yield return delay;
 
             base.Spawn();
-        }
-    }
-
-    private void ReactToCollision(IInteractable interactable)
-    {
-        if (interactable is EnemyBird bird)
-        {
-            bird.ReturnToPool();
-        }
-
-        if (interactable is Bullet bullet)
-        {
-            bullet.ReturnToPool();
         }
     }
 }

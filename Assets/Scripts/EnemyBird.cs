@@ -44,7 +44,7 @@ public class EnemyBird : MonoBehaviour, IRecreatabl
         ObjectReadyToComeBack?.Invoke(this);
     }
 
-    public void EndTheLife()
+    public void Die()
     {
         gameObject.SetActive(false);
     }
@@ -58,9 +58,10 @@ public class EnemyBird : MonoBehaviour, IRecreatabl
 
     private void ReactToColission(IInteractable interactable)
     {
-        if (interactable is PlayerBullet)
+        if (interactable is PlayerBullet bullet)
         {
             ReturnToPool();
+            bullet.ReturnToPool();
         }
     }
 

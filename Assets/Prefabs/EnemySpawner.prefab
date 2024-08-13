@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 7084285403725901313}
   - component: {fileID: 8094008961944147702}
   - component: {fileID: 4061979152456642167}
+  - component: {fileID: 3294824296647938870}
+  - component: {fileID: 2959704631716926855}
   m_Layer: 0
-  m_Name: CollidDetector
+  m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,6 +92,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e0d7cf2fb04374eac291996e5d4777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3294824296647938870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670478225745032995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4469f76a8823e14ab93b2ba9abcfd40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collideDetector: {fileID: 4061979152456642167}
+--- !u!50 &2959704631716926855
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670478225745032995}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &5508003710570165191
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,10 +181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pool: {fileID: 2782227626039138174}
-  _direction: -1
+  _direction: {x: 0, y: 0, z: 0}
   _minDelay: 3
   _maxDelay: 7
-  _collideDetector: {fileID: 4061979152456642167}
 --- !u!114 &2782227626039138174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pool: {fileID: 1761849500388053212}
-  _direction: -1
+  _direction: {x: 0, y: 0, z: 0}
 --- !u!114 &1761849500388053212
 MonoBehaviour:
   m_ObjectHideFlags: 0

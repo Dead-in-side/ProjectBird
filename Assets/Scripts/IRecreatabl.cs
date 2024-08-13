@@ -7,7 +7,7 @@ public interface IRecreatabl: IInteractable
 
     public void Init(Vector3 position);
 
-    public void EndTheLife();
+    public void Die();
 
     public void SetDirection(Vector3 direction);
 
